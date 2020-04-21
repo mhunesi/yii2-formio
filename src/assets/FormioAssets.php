@@ -17,13 +17,13 @@ use yii\web\AssetBundle;
 
 class FormioAssets extends AssetBundle
 {
-    public $sourcePath = YII_ENV_DEV ? '@npm/formiojs/dist' : (__DIR__.'/_bundle');
+    public $sourcePath = __DIR__.'/_bundle';
 
     public $css = [
-        YII_ENV_DEV ? 'formio.full.css' : 'formio.full.min.css',
+        'formio.full.min.css',
     ];
 
     public $js = [
-        YII_ENV_DEV ? 'formio.full.js' : 'formio.full.min.js',
+        'formio.full.min.js',
     ];
 }

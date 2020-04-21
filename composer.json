@@ -16,7 +16,6 @@
         "yii2tech/ar-softdelete": "1.0.*"
     },
     "require-dev": {
-        "npm-asset/formiojs": "4.7.8",
         "phpunit/phpunit": "^9.0",
         "phan/phan": "^2.4"
     },
