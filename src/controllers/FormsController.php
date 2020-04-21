@@ -28,7 +28,7 @@ class FormsController extends Controller
                 'only' => ['index','create','update','delete','view'],
                 'rules' => [
                     [
-                        'only' => ['index','create','update','delete','view'],
+                        'actions' => ['index','create','update','delete','view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
