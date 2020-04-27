@@ -26,5 +26,6 @@ return [
     'Updated By' => 'Güncelleyen Kullanıcı',
     'Are you sure you want to delete this item?' => 'Bu veriyi silmek istediğinize emin misiniz?',
     'ID' => 'ID',
-    'Is Deleted' => 'Silindi mi?'
+    'Is Deleted' => 'Silindi mi?',
+    'Thanks For Submission' => 'Yanıtladığınız için teşekkürler.'
 ];
