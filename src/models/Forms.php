@@ -152,19 +152,6 @@ class Forms extends BaseModel
         }
     }
 
-    public function getAllModels()
-    {
-        $models =  [];
-
-        foreach(get_declared_classes() as $class){
-            if( is_subclass_of( $class, Model::className() ) ){
-                $models[$class] = $class;
-            }
-        }
-
-        return $models;
-    }
-
     public function render($options = [])
     {
         echo FormioWidget::widget(ArrayHelper::merge([

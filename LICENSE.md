@@ -1,4 +1,4 @@
-Copyright © 2008 by Yii Software LLC (http://www.yiisoft.com)
+Copyright © 2008 by Muka Software LLC (https://www.mustafaunesi.com.tr)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

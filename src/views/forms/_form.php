@@ -23,7 +23,7 @@ if($model->data){
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'model')->dropDownList($model->getAllModels(),['prompt' => Yii::t('formio','Select')]) ?>
+    <?= $form->field($model, 'model')->textInput(['maxlenght' => true]) ?>
 
     <?= $form->field($model,'type')->dropDownList(['form' => 'Form','wizard' => 'Wizard']) ?>
 

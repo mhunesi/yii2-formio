@@ -26,7 +26,7 @@ migrations. Make sure that you have properly configured `db` application compone
 and run the following command:
 
 ```sh
-yii migrate --migrationPath=@mhunesi/formio/migrations
+    yii migrate --migrationPath=@mhunesi/formio/migrations
 ```
 
 Add the modules to your application configuration file:
