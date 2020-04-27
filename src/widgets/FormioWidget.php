@@ -150,12 +150,15 @@ class FormioWidget extends Widget
         Yii::$app->getModule('formio')->registerTranslations();
 
         $messageSource = new PhpMessageSource();
+
+        $lang = \Locale::getPrimaryLanguage(Yii::$app->language);
+
         $message = $messageSource->formMessages();
 
         $this->clientOptions = ArrayHelper::merge([
-            'language' => Yii::$app->language,
+            'language' => $lang,
             'i18n' => [
-                Yii::$app->language => $message
+                $lang => $message
             ]
         ],$this->clientOptions);
 
