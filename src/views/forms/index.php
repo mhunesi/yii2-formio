@@ -40,7 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a($model->name,['forms/view','id' => $model->id]);
                 }
             ],
-            'token',
+            [
+                'attribute' => 'token',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::a($model->token,['survey/index','token' => $model->token],['target' => '_blank','data-pjax' => 0]);
+                }
+            ],
             'model',
             //'data',
             'created_at:datetime',
