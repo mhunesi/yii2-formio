@@ -17,7 +17,7 @@ $this->title = $form->name;
 $asset = \mhunesi\formio\assets\FormioAssets::register($this);
 ?>
 
-<div class="survey-head text-center">
-    <img class="mb-4" width="80" alt="Gezer Ayakkabı" src="<?= $asset->baseUrl.'/img/tick.png' ?>">
+<div class="survey-head text-center pt-4">
+    <img class="mb-4" width="80" src="<?= $asset->baseUrl.'/img/tick.png' ?>">
     <h4 class="text-center"><?= Yii::t('formio','Thanks For Submission') ?>.</h4>
 </div>
