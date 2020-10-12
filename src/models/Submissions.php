@@ -2,6 +2,7 @@
 
 namespace mhunesi\formio\models;
 
+use mhunesi\formio\Module;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -138,8 +139,11 @@ class Submissions extends BaseModel
             /** @var ActiveRecord $model */
             $this->refModel = new $this->form->model();
 
+            /** @var Module $module */
+            $module = Yii::$app->getModule('formio');
+
             if($this->refModel->load($this->data,'') && $this->refModel->save()){
-                $this->delete();
+                $module->deleteAfterSave ? $this->delete() : null;
             }
         }
     }
