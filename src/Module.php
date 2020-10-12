@@ -30,6 +30,12 @@ class Module extends \yii\base\Module
     public $userModel = 'app/models/User';
 
     /**
+     * When save reference Model delete.
+     * @var bool
+     */
+    public $deleteAfterSave = false;
+
+    /**
      * {@inheritdoc}
      */
     public function init()

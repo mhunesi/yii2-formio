@@ -23,7 +23,15 @@ use yii\db\ActiveRecord;
  */
 class Submissions extends BaseModel
 {
+    /**
+     * @var array
+     */
     public $metadata;
+
+    /**
+     * @var ActiveRecord
+     */
+    public $refModel;
     /**
      * {@inheritdoc}
      */
@@ -107,7 +115,7 @@ class Submissions extends BaseModel
     }
 
     /**
-     *
+     * Validate Reference Model
      */
     public function validateFormModel()
     {
@@ -121,13 +129,18 @@ class Submissions extends BaseModel
         }
     }
 
+    /**
+     * Save Reference Model
+     */
     public function saveReferenceModel()
     {
         if($this->form && $this->form->model){
             /** @var ActiveRecord $model */
-            $model = new $this->form->model();
+            $this->refModel = new $this->form->model();
 
-            $model->load($this->data,'') && $model->save();
+            if($this->refModel->load($this->data,'') && $this->refModel->save()){
+                $this->delete();
+            }
         }
     }
 
