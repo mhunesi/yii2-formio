@@ -105,7 +105,7 @@ Screenshots
 
 ![screen-1](https://www.mustafaunesi.com.tr/uploads/2020/04/create-forms.png)
 
-[All Screenshots](docs/screenshot.md)...
+[All Screenshots](screenshot.md)...
 
 ---
 
