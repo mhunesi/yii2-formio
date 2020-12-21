@@ -2,6 +2,7 @@
 
 namespace mhunesi\formio\models\query;
 
+use mhunesi\formio\enum\StatusEnum;
 /**
  * This is the ActiveQuery class for [[\mhunesi\formio\models\Forms]].
  *
@@ -11,12 +12,12 @@ class FormsQuery extends \yii\db\ActiveQuery
 {
     public function active()
     {
-        return $this->andWhere('[[status]]=1');
+        return $this->andWhere(['status' => StatusEnum::ACTIVE]);
     }
 
     public function notDeleted()
     {
-        return $this->andWhere('[[deleted]]=0');
+        return $this->andWhere(['deleted' => 0]);
     }
 
     public function token($token)

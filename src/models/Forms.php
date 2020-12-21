@@ -24,6 +24,7 @@ use yii\helpers\Json;
  * @property int|null $created_by Created By
  * @property int|null $updated_by Updated By
  * @property int|null $deleted Is Deleted
+ * @property int $cookie_tracking Cookie Tracking
  *
  * @property User $createdBy
  * @property User $updatedBy
@@ -32,14 +33,6 @@ use yii\helpers\Json;
 class Forms extends BaseModel
 {
     public $type;
-
-    const STATUS_ACTIVE = 1;
-    const STATUS_INACTIVE = 0;
-
-    const STATUS = [
-        self::STATUS_INACTIVE => 'Inactive',
-        self::STATUS_ACTIVE => 'Active'
-    ];
 
     public function init()
     {
@@ -63,7 +56,7 @@ class Forms extends BaseModel
     public function rules()
     {
         return [
-            [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'deleted'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'deleted','cookie_tracking'], 'integer'],
             [['data'], 'safe'],
             [['token'], 'unique'],
             [['model'], 'validateClass', 'params' => ['extends' => BaseActiveRecord::className()]],
@@ -92,6 +85,7 @@ class Forms extends BaseModel
             'created_by' => Yii::t('formio', 'Created By'),
             'updated_by' => Yii::t('formio', 'Updated By'),
             'deleted' => Yii::t('formio', 'Is Deleted'),
+            'cookie_tracking' => Yii::t('formio', 'Cookie Tracking'),
         ];
     }
 

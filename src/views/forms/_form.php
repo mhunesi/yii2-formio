@@ -1,10 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\widgets\ActiveForm;
 use mhunesi\formio\widgets\FormioBuilderWidget;
-use mhunesi\formio\models\Forms;
+use mhunesi\formio\enum\StatusEnum;
+use mhunesi\formio\enum\CookieTrackingEnum;
 /* @var $this yii\web\View */
 /* @var $model mhunesi\formio\models\Forms */
 /* @var $form yii\widgets\ActiveForm */
@@ -19,7 +19,9 @@ if($model->data){
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'status')->radioList(Forms::STATUS) ?>
+    <?= $form->field($model, 'status')->radioList(StatusEnum::listData()) ?>
+
+    <?= $form->field($model, 'cookie_tracking')->radioList(CookieTrackingEnum::listData()) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

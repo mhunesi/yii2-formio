@@ -17,7 +17,7 @@ class FormsSearch extends Forms
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'deleted'], 'integer'],
+            [['id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by', 'deleted','cookie_tracking'], 'integer'],
             [['name', 'token', 'model', 'data'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class FormsSearch extends Forms
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
+            'cookie_tracking' => $this->cookie_tracking,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,

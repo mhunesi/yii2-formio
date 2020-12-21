@@ -33,6 +33,7 @@ class Submissions extends BaseModel
      * @var ActiveRecord
      */
     public $refModel;
+
     /**
      * {@inheritdoc}
      */

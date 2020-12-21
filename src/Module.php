@@ -36,6 +36,17 @@ class Module extends \yii\base\Module
     public $deleteAfterSave = false;
 
     /**
+     * @var string
+     */
+    public $cookieName = 'formio_save_form';
+
+    /**
+     * 24 Hours
+     * @var float|int
+     */
+    public $cookieExpireTime = 86400;
+
+    /**
      * {@inheritdoc}
      */
     public function init()

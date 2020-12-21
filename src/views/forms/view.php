@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use mhunesi\formio\widgets\FormioWidget;
+use mhunesi\formio\enum\StatusEnum;
+use mhunesi\formio\enum\CookieTrackingEnum;
 
 /* @var $this yii\web\View */
 /* @var $model mhunesi\formio\models\Forms */
@@ -34,11 +36,23 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'status',
                 'value' => function($model){
-                    return Yii::t('formio',\mhunesi\formio\models\Forms::STATUS[$model->status]);
+                    return StatusEnum::getLabel($model->status);
+                }
+            ],
+            [
+                'attribute' => 'cookie_tracking',
+                'value' => function($model){
+                    return CookieTrackingEnum::getLabel($model->cookie_tracking);
                 }
             ],
             'name',
-            'token',
+            [
+                'attribute' => 'token',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::a($model->token,['survey/index','token' => $model->token],['target' => '_blank','data-pjax' => 0]);
+                }
+            ],
             'model',
             'created_at:datetime',
             'updated_at:datetime',

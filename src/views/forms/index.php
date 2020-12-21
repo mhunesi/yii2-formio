@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use mhunesi\formio\enum\StatusEnum;
+use mhunesi\formio\enum\CookieTrackingEnum;
+
 /* @var $this yii\web\View */
 /* @var $searchModel mhunesi\formio\models\search\FormsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -23,15 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             [
                 'attribute' => 'status',
                 'value' => function($model){
-                    return Yii::t('formio',\mhunesi\formio\models\Forms::STATUS[$model->status]);
-                }
+                    return StatusEnum::getLabel($model->status);
+                },
+                'filter' => StatusEnum::listData()
+            ],
+            [
+                'attribute' => 'cookie_tracking',
+                'value' => function($model){
+                    return CookieTrackingEnum::getLabel($model->cookie_tracking);
+                },
+                'filter' => CookieTrackingEnum::listData()
             ],
             [
                 'attribute' => 'name',

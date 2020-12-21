@@ -12,12 +12,15 @@
 
 namespace mhunesi\formio\controllers;
 
-use mhunesi\formio\models\Submissions;
-use mhunesi\formio\traits\FormioTrait;
 use Yii;
-use mhunesi\formio\models\Forms;
+use yii\web\Cookie;
 use yii\web\Controller;
+use mhunesi\formio\Module;
+use mhunesi\formio\models\Forms;
 use yii\web\NotFoundHttpException;
+use mhunesi\formio\traits\FormioTrait;
+use mhunesi\formio\models\Submissions;
+use mhunesi\formio\enum\CookieTrackingEnum;
 
 class SurveyController extends Controller
 {
@@ -28,6 +31,15 @@ class SurveyController extends Controller
     public function actionIndex($token)
     {
         $form = $this->findModel($token);
+
+        /** @var Module $module */
+        $module = $this->module;
+
+        if((int)$form->cookie_tracking === CookieTrackingEnum::ACTIVE &&
+            Yii::$app->request->cookies->getValue($module->cookieName. "_{$form->id}"))
+        {
+            return $this->redirect(['thanks','token' => $token]);
+        }
 
         $this->performFormioSave(new Submissions([
             'form_id' => $form->id,
@@ -42,6 +54,18 @@ class SurveyController extends Controller
     {
         $form = $this->findModel($token);
 
+        /** @var Module $module */
+        $module = $this->module;
+
+        if((int)$form->cookie_tracking === CookieTrackingEnum::ACTIVE){
+            Yii::$app->response->cookies->add(new Cookie([
+                'name' => $module->cookieName. "_{$form->id}",
+                'value' => true,
+                'expire' => time() + $module->cookieExpireTime,
+                'path' => $this->getUniqueId()
+            ]));
+        }
+
         return $this->render('thanks',[
             'form' => $form
         ]);
@@ -49,7 +73,7 @@ class SurveyController extends Controller
 
     protected function findModel($token)
     {
-        if (($model = Forms::find()->token($token)->one()) !== null) {
+        if (($model = Forms::find()->active()->notDeleted()->token($token)->one()) !== null) {
             return $model;
         }
 

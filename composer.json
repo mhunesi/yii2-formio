@@ -13,7 +13,8 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.0",
-        "yii2tech/ar-softdelete": "1.0.*"
+        "yii2tech/ar-softdelete": "1.0.*",
+        "yii2mod/yii2-enum" : "^1.7.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",

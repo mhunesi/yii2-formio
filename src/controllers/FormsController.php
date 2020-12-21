@@ -109,16 +109,6 @@ class FormsController extends Controller
         ]);
     }
 
-    public function actionRender()
-    {
-        header("Access-Control-Allow-Origin: *");
-        Yii::$app->response->format = 'json';
-
-        $model = Forms::findOne(2);
-
-        return Json::decode($model->data);
-    }
-
     /**
      * Deletes an existing Forms model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
