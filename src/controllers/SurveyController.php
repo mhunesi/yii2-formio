@@ -61,8 +61,7 @@ class SurveyController extends Controller
             Yii::$app->response->cookies->add(new Cookie([
                 'name' => $module->cookieName. "_{$form->id}",
                 'value' => true,
-                'expire' => time() + $module->cookieExpireTime,
-                'path' => $this->getUniqueId()
+                'expire' => time() + $module->cookieExpireTime
             ]));
         }
 
