@@ -54,7 +54,7 @@ class FormioWidget extends Widget
 
         $this->registerClientScript();
 
-        return Html::tag('div','',$this->options);
+        return Html::tag('form','',$this->options);
     }
 
     public function registerClientScript()
