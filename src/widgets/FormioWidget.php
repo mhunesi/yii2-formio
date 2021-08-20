@@ -64,15 +64,8 @@ class FormioWidget extends Widget
         $submissionJson = Json::encode($this->submission);
 
         $this->view->registerJs("
-        new Event('formioBuildReady');
-        
-        window.addEventListener('load', function (e) { 
-            dispatchEvent(new Event('formioBuildReady'));
-        }, false);
-        
-        window.addEventListener('formioBuildReady',function(event) {
-             window.formio_{$this->id} = new Formio.createForm(document.getElementById('{$this->id}'), {$queryJson},{$clientOptionsJson})
-             .then(function(form) {
+            window.formio_{$this->id} = new Formio.createForm(document.getElementById('{$this->id}'), {$queryJson},{$clientOptionsJson})
+                .then(function(form) {
                 form.nosubmit = true;
                 
                 var submissionValue = {$submissionJson};
@@ -81,7 +74,7 @@ class FormioWidget extends Widget
                 form.submission = {
                     data: submissionValue
                 };
-
+                
                 form.on('submit', function(submission) {
                   return fetch('{$this->action}', {
                       method: 'POST',
@@ -139,8 +132,7 @@ class FormioWidget extends Widget
                  window.setLanguage = function(lang) {
                     form.language = lang;
                  };
-            });
-        },false);",View::POS_END);
+            });");
     }
 
     protected function setDefaultProperties()
