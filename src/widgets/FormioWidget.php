@@ -64,8 +64,9 @@ class FormioWidget extends Widget
         $submissionJson = Json::encode($this->submission);
 
         $this->view->registerJs("
-            window.formio_{$this->id} = new Formio.createForm(document.getElementById('{$this->id}'), {$queryJson},{$clientOptionsJson})
-                .then(function(form) {
+            window.formio_{$this->id} = new Formio.createForm(document.getElementById('{$this->id}'), {$queryJson},{$clientOptionsJson});
+            
+            window.formio_{$this->id}.then(function(form) {
                 form.nosubmit = true;
                 
                 var submissionValue = {$submissionJson};
