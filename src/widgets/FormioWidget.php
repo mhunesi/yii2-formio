@@ -64,7 +64,7 @@ class FormioWidget extends Widget
         $submissionJson = Json::encode($this->submission);
 
         $this->view->registerJs("
-        const event = new Event('formioBuildReady');
+        new Event('formioBuildReady');
         
         window.addEventListener('load', function (e) { 
             dispatchEvent(new Event('formioBuildReady'));
