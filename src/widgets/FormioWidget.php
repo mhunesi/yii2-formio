@@ -85,6 +85,9 @@ class FormioWidget extends Widget
                       }
                     })
                     .then(response => {
+                      if(response.redirected){
+                        window.location.href = response.url;
+                      }
                       return response.json();
                     }).then(e => {
                        if(e.status){ 
